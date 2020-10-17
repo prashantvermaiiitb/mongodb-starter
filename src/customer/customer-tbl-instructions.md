@@ -96,4 +96,7 @@ db.customers.insert({
 
 8) Showing proper message in-case of failure or comply during the insert
 
-9) 
+9) Dropping the collection 
+  > db.customer.drop()
+  
+10) 
