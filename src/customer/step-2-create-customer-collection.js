@@ -69,12 +69,27 @@ db.createCollection("Customers", {
 /**
  * to check whether the customer collection has been created or not
  */
-show collections
+// show collections
 
 /**
  * @todo : Further data-points to explore :-
- * 
+ *
  * How to add the enums on the fly or after the addition ?
  * validation action / level : how to use them properly ?
- * What are other Data-types in the Mongo ? out of 16 
+ * What are other Data-types in the Mongo ? out of 16
+ * Defining array of values and putting validation on them ? like phone numbers or emails
+ * Putting validation on the email field with pattern
  */
+
+
+
+db.tmp4.insert({
+  name: { first_name: "1a", second_name: "b2" },
+  phone: [
+    NumberLong(8777777788),
+    NumberLong(8777777788),
+    NumberLong(8888888890),
+    NumberLong(9999999934),
+    NumberLong(9999996378),
+  ],
+});
