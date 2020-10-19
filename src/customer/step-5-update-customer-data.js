@@ -27,18 +27,18 @@ db.runCommand({
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["phone"],
+      required: ["phone"], //phone is required now 
       properties: {
         phone: {
-          bsonType: ["array"],
-          uniqueItems: true,
-          minItems: 1,
-          maxItems: 5,
+          bsonType: ["array"], // should be an array
+          uniqueItems: true, //should be unique items
+          minItems: 1, //minimum limit
+          maxItems: 5, //maximum limit
           description: "Must be an array of phone numbers",
           items: {
             bsonType: "long",
-            minimum: 7777777777,
-            maximum: 9999999999,
+            minimum: 7777777777, //for each number min value
+            maximum: 9999999999, //for each number max value
             description: "Should be 10 digit not null number.",
           },
         },
@@ -47,7 +47,7 @@ db.runCommand({
   },
 });
 
-//Not working till you update the schema with "Phone" number changes
+//Not working - till you update the schema with "Phone" number changes
 db.Customers.find({ phone: { $exists: true } }).forEach(function (myDocument) {
   db.Customers.update(
     { _id: myDocument._id },
@@ -55,7 +55,7 @@ db.Customers.find({ phone: { $exists: true } }).forEach(function (myDocument) {
   );
 });
 
-//Not working till you update the schema with "Phone" number changes
+//Not working - till you update the schema with "Phone" number changes
 db.Customers.find({
   "name.first_name": "Prashant",
   phone: { $not: { $exists: true } },
